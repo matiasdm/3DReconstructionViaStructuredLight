@@ -16,8 +16,10 @@ Despite the previous, the core of the 3D algorithms implemented might be useful 
 - tools: here is where most interesting things are implemented. There is code for: "3dreconstruction" which includes the implementation of the ideas in [1,2] plus some traditional algorithms such as "Takeda" and "Phase-Shifting." "2dintregration" contains code to integrate a 2D gradient field using multiple techniques, e.g., least squared, weighted least squares, L1, and so on (check Appendix A of [1]). 
 
 ## Examples 
-Images under the projection of different structured patterns are illustrated in /Data. Examples are illustrated below
-![title](figs/inputs.png). To try different inputs, try in lines 22 and 23 of demo.m using
+Images under the projection of different structured patterns are illustrated in /Data. Examples are illustrated below.
+![title](figs/inputs.png)
+
+To try different inputs, try in lines 22 and 23 of demo.m using
 ```matlab
 id            = '_1';  
 ExpFolder     = 'Data/Faces/';
