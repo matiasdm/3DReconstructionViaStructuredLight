@@ -1,0 +1,38 @@
+
+APP     = flynn
+
+SRCS    = dxdygrad.c \
+          extract.c \
+          flynn.c \
+          getqual.c \
+          grad.c \
+          histo.c \
+          mainflyn.c \
+          maskfat.c \
+          qualgrad.c \
+          qualpseu.c \
+          qualvar.c \
+          trees.c \
+          util.c
+
+OBJS    = $(SRCS:.c=.o)
+
+CFLAGS  = -c
+LDFLAGS = -lm
+
+.PHONY: all clean
+
+
+all: $(APP)
+
+$(APP): $(OBJS)
+	@echo Linking $@
+	@$(CC) $(OBJS) $(LDFLAGS) -o $@
+
+.c.o:
+	@echo Compiling $<
+	@$(CC) $(CFLAGS) $<
+
+clean:
+	$(RM) $(OBJS)
+	$(RM) $(APP)

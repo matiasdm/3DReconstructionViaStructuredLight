@@ -1,0 +1,32 @@
+
+APP     = unwt
+
+SRCS    = dct.c \
+          extract.c \
+          grad.c \
+          laplace.c \
+          mainunwt.c \
+          solncos.c \
+          util.c
+
+OBJS    = $(SRCS:.c=.o)
+
+CFLAGS  = -c
+LDFLAGS = -lm
+
+.PHONY: all clean
+
+
+all: $(APP)
+
+$(APP): $(OBJS)
+	@echo Linking $@
+	@$(CC) $(OBJS) $(LDFLAGS) -o $@
+
+.c.o:
+	@echo Compiling $<
+	@$(CC) $(CFLAGS) $<
+
+clean:
+	$(RM) $(OBJS)
+	$(RM) $(APP)

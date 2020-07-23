@@ -1,0 +1,27 @@
+
+APP     = diff
+
+SRCS    = maindiff.c \
+          util.c
+
+OBJS    = $(SRCS:.c=.o)
+
+CFLAGS  = -c
+LDFLAGS = -lm
+
+.PHONY: all clean
+
+
+all: $(APP)
+
+$(APP): $(OBJS)
+	@echo Linking $@
+	@$(CC) $(OBJS) $(LDFLAGS) -o $@
+
+.c.o:
+	@echo Compiling $<
+	@$(CC) $(CFLAGS) $<
+
+clean:
+	$(RM) $(OBJS)
+	$(RM) $(APP)

@@ -1,0 +1,44 @@
+
+APP     = lpno
+
+SRCS    = congruen.c \
+	  dct.c \
+	  dxdygrad.c \
+          extract.c \
+          getqual.c \
+          grad.c \
+          histo.c \
+	  laplace.c \
+	  lpnorm.c \
+          mainlpno.c \
+          maskfat.c \
+	  pcg.c \
+          qualgrad.c \
+          qualpseu.c \
+          qualvar.c \
+          raster.c \
+	  residues.c \
+	  solncos.c \
+          util.c
+
+OBJS    = $(SRCS:.c=.o)
+
+CFLAGS  = -c
+LDFLAGS = -lm
+
+.PHONY: all clean
+
+
+all: $(APP)
+
+$(APP): $(OBJS)
+	@echo Linking $@
+	@$(CC) $(OBJS) $(LDFLAGS) -o $@
+
+.c.o:
+	@echo Compiling $<
+	@$(CC) $(CFLAGS) $<
+
+clean:
+	$(RM) $(OBJS)
+	$(RM) $(APP)

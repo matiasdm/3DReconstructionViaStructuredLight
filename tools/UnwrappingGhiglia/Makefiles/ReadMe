@@ -1,0 +1,23 @@
+Makefiles for Ghiglia and Pritt Unwrapping Codes
+
+Ghiglia and Pritt published "the bible" for 2D unwrapping in 1998, and included C codes for several unwrapping algorithms. The codes are available on the book's FTP site, available to the owners of the book. To run these programs, you will need to compile them.
+
+ 
+
+There are of course more than one way to compile C code. Interested readers can check out the references at the end of this post. The way that I like is to prepare makefiles. The advantages of makefiles over just using commands are:
+
+ 
+
+Repeated use: no need to remember what files were required to compile the code.
+Distribution: one can share the makefiles.
+Clean: run clean option to remove object files from the source directory.
+Anyhow, the makefiles are located in this zip archive. To compile the programs using these Makefiles:
+Download the source code from the Wiley FTP site.
+Unzip the source code.
+Download the Makefiles from here.
+Unzip the Makefiles in the same folder (inside phase/code folder)
+cd into the source code folder (phase/code)
+make -f Makefile_mainlpno to compile lpno (L-p Norm unwrapping code).
+make -f Makefile_mainlpno clean to remove the object files.
+repeat 6-7 for other programs you are interested...
+

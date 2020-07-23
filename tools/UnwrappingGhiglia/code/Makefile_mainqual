@@ -1,0 +1,37 @@
+
+APP     = qual
+
+SRCS    = dxdygrad.c \
+          extract.c \
+          getqual.c \
+          grad.c \
+          list.c \
+          mainqual.c \
+          maskfat.c \
+          quality.c \
+	  qualgrad.c \
+          qualpseu.c \
+          qualvar.c \
+          util.c
+
+OBJS    = $(SRCS:.c=.o)
+
+CFLAGS  = -c
+LDFLAGS = -lm
+
+.PHONY: all clean
+
+
+all: $(APP)
+
+$(APP): $(OBJS)
+	@echo Linking $@
+	@$(CC) $(OBJS) $(LDFLAGS) -o $@
+
+.c.o:
+	@echo Compiling $<
+	@$(CC) $(CFLAGS) $<
+
+clean:
+	$(RM) $(OBJS)
+	$(RM) $(APP)

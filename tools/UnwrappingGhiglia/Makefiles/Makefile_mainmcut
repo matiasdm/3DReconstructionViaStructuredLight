@@ -1,0 +1,40 @@
+
+APP     = mcut
+
+SRCS    = dxdygrad.c \
+          extract.c \
+          getqual.c \
+          grad.c \
+	  list.c \
+          mainmcut.c \
+	  maskcut.c \
+          maskfat.c \
+	  maskthin.c \
+	  path.c \
+          qualgrad.c \
+          qualpseu.c \
+          qualvar.c \
+          residues.c \
+          util.c
+
+OBJS    = $(SRCS:.c=.o)
+
+CFLAGS  = -c
+LDFLAGS = -lm
+
+.PHONY: all clean
+
+
+all: $(APP)
+
+$(APP): $(OBJS)
+	@echo Linking $@
+	@$(CC) $(OBJS) $(LDFLAGS) -o $@
+
+.c.o:
+	@echo Compiling $<
+	@$(CC) $(CFLAGS) $<
+
+clean:
+	$(RM) $(OBJS)
+	$(RM) $(APP)

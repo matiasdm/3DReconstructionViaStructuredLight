@@ -1,0 +1,42 @@
+
+APP     = fmg
+
+SRCS    = congruen.c \
+	  dxdygrad.c \
+          extract.c \
+          fmg.c \
+          getqual.c \
+          grad.c \
+	  grid.c \
+	  gridmem.c \
+	  gridops.c \
+          histo.c \
+          mainfmg.c \
+          maskfat.c \
+          qualgrad.c \
+          qualpseu.c \
+          qualvar.c \
+          relax.c \
+          util.c
+
+OBJS    = $(SRCS:.c=.o)
+
+CFLAGS  = -c
+LDFLAGS = -lm
+
+.PHONY: all clean
+
+
+all: $(APP)
+
+$(APP): $(OBJS)
+	@echo Linking $@
+	@$(CC) $(OBJS) $(LDFLAGS) -o $@
+
+.c.o:
+	@echo Compiling $<
+	@$(CC) $(CFLAGS) $<
+
+clean:
+	$(RM) $(OBJS)
+	$(RM) $(APP)

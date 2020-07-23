@@ -1,0 +1,35 @@
+
+APP     = unmg
+
+SRCS    = dxdygrad.c \
+          extract.c \
+          grad.c \
+	  gridmem.c \
+	  gridops.c \
+          mainunmg.c \
+          relax.c \
+	  unfmg.c \
+	  ungrid.c \
+          util.c
+
+OBJS    = $(SRCS:.c=.o)
+
+CFLAGS  = -c
+LDFLAGS = -lm
+
+.PHONY: all clean
+
+
+all: $(APP)
+
+$(APP): $(OBJS)
+	@echo Linking $@
+	@$(CC) $(OBJS) $(LDFLAGS) -o $@
+
+.c.o:
+	@echo Compiling $<
+	@$(CC) $(CFLAGS) $<
+
+clean:
+	$(RM) $(OBJS)
+	$(RM) $(APP)
